@@ -1,3 +1,3 @@
-struct Bird {
-    var text = "Hello, World!"
+public struct Bird {
+    public static var text = "Bird is on its way"
 }
