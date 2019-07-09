@@ -8,19 +8,28 @@
 import Foundation
 import Combine
 
+public typealias DataTaskPublisherResponse = AnyPublisher<URLSession.DataTaskPublisher.Output, URLSession.DataTaskPublisher.Failure>
+
 public protocol RequestServiceProtocol {
-    func request<T>(_ request: Request,
-                    responseType: T.Type) throws -> AnyPublisher<T, Error> where T : Decodable
+    func request(request: Request) throws -> DataTaskPublisherResponse
+    func request<T>(_ request: Request, responseType: T.Type) throws -> AnyPublisher<T, Error> where T : Decodable
 }
 
-class RequestService: NSObject, RequestServiceProtocol {
-    let converter: RequestConverterProtocol
+class RequestService: NSObject {
+    private let converter: RequestConverterProtocol
+    private static let decoder = JSONDecoder()
     
     init(converter: RequestConverterProtocol) {
         self.converter = converter
     }
-    
-    private static let decoder = JSONDecoder()
+}
+
+extension RequestService: RequestServiceProtocol {
+    public func request(request: Request) throws -> AnyPublisher<URLSession.DataTaskPublisher.Output, URLSession.DataTaskPublisher.Failure> {
+        let session = URLSession(configuration: .default)
+        let urlRequest = try converter.convertRequest(request: request)
+        return URLSession.DataTaskPublisher(request: urlRequest, session: session).eraseToAnyPublisher()
+    }
     
     public func request<T: Decodable>(_ request: Request,
                                       responseType: T.Type) throws -> AnyPublisher<T, Error>{
@@ -29,8 +38,8 @@ class RequestService: NSObject, RequestServiceProtocol {
         let publisher = URLSession.DataTaskPublisher(request: urlRequest, session: session)
         
         return publisher
-                    .map { $0.data }
-                    .decode(type: responseType, decoder: RequestService.decoder)
-                    .eraseToAnyPublisher()
+            .map { $0.data }
+            .decode(type: responseType, decoder: RequestService.decoder)
+            .eraseToAnyPublisher()
     }
 }
