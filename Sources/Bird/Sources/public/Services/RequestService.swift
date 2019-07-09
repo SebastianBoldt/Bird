@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  RequestService.swift
 //  
 //
 //  Created by Sebastian Boldt on 07.07.19.
@@ -8,16 +8,24 @@
 import Foundation
 import Combine
 
-protocol RequestServiceProtocol {
-    func request<T>(_ request: Request, responseType: T.Type) throws -> AnyPublisher<T, Error> where T : Decodable
+public protocol RequestServiceProtocol {
+    func request<T>(_ request: Request,
+                    responseType: T.Type) throws -> AnyPublisher<T, Error> where T : Decodable
 }
 
-public class RequestService: NSObject, RequestServiceProtocol {
+class RequestService: NSObject, RequestServiceProtocol {
+    let converter: RequestConverterProtocol
+    
+    init(converter: RequestConverterProtocol) {
+        self.converter = converter
+    }
+    
     private static let decoder = JSONDecoder()
-
-    public func request<T: Decodable>(_ request: Request, responseType: T.Type) throws -> AnyPublisher<T, Error>{
+    
+    public func request<T: Decodable>(_ request: Request,
+                                      responseType: T.Type) throws -> AnyPublisher<T, Error>{
         let session = URLSession(configuration: .default)
-        let urlRequest = try request.convertToURLRequest()
+        let urlRequest = try converter.convertRequest(request: request)
         let publisher = URLSession.DataTaskPublisher(request: urlRequest, session: session)
         
         return publisher
