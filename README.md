@@ -1,12 +1,11 @@
 ![Bird](https://github.com/SebastianBoldt/Bird/blob/develop/Bird/Github/Header.jpg?raw=true)
 
 # 🐤 Bird
-### A lightweight networking abstraction layer based on combine
+### Bird is an HTTP networking library written in Swift based on Combine.
 
-Bird is a lightweight networking abstraction layer for NSURLSession based on Combine.
+Bird is a lightweight abstraction layer above NSURLSession based on Combine.
 
-It provides an easy to use plugin system for logging, intercepting or even retrying requests.
-## Basic Example 
+## Basic Example
 
 ```
 let requestService = Bird.makeRequestService()
@@ -32,7 +31,7 @@ struct PokeAPI: Request {
     var responseType: Codable.self {
         // Currently just an Idea
     }
-    
+
     var scheme: HTTPScheme {
         return .https
     }
@@ -59,7 +58,7 @@ struct PokeAPI: Request {
 }
 ```
 
-## Plugin Architecture
+## Plugins
 
 * shouldRequest
 * requestWillBeSent
