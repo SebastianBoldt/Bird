@@ -1,4 +1,4 @@
-![Bird](https://github.com/SebastianBoldt/Bird/blob/develop/Github/Header.jpg?raw=true)
+![Bird](https://github.com/SebastianBoldt/Bird/blob/develop/Bird/Github/Header.jpg?raw=true)
 
 # 🐤 Bird
 ### A lightweight networking abstraction layer based on combine
