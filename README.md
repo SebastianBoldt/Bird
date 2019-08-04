@@ -1,3 +1,5 @@
+![Bird](https://github.com/SebastianBoldt/Bird/blob/develop/Github/Header.png?raw=true)
+
 # 🐤 Bird
 
 Sometimes we just need to make a simple request.
