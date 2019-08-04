@@ -1,4 +1,4 @@
-![Bird](https://github.com/SebastianBoldt/Bird/blob/develop/Github/Header.png?raw=true)
+![Bird](https://github.com/SebastianBoldt/Bird/blob/develop/Github/Header.jpg?raw=true)
 
 # 🐤 Bird
 
@@ -30,7 +30,7 @@ struct PokeAPI: Request {
     var scheme: HTTPScheme {
         return .https
     }
-    
+
     var method: HTTPMethod {
         return .get
     }
@@ -53,7 +53,7 @@ struct PokeAPI: Request {
 }
 ```
 
-After you created your Target you 
+After you created your Target you
 
 Feat
 * Logging
