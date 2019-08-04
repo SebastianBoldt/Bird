@@ -4,8 +4,8 @@
 ### A lightweight networking abstraction layer based on combine
 
 Bird is a lightweight networking abstraction layer for NSURLSession based on Combine.
-It provides a easy to use plugin system with a some preconfigured ones
 
+It provides an easy to use plugin system for logging, intercepting or even retrying requests.
 ## Basic Example 
 
 ```
@@ -58,6 +58,14 @@ struct PokeAPI: Request {
     }
 }
 ```
+
+## Plugin Architecture
+
+* shouldRequest
+* requestWillBeSent
+* requestDidSent
+* requestFailed
+* requestSucceeded
 
 Feat
 * Logging
