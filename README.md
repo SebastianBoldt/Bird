@@ -1,10 +1,12 @@
 ![Bird](https://github.com/SebastianBoldt/Bird/blob/develop/Github/Header.jpg?raw=true)
 
 # 🐤 Bird
+### A lightweight networking abstraction layer based on combine
 
-Sometimes we just need to make a simple request.
 Bird is a lightweight networking abstraction layer for NSURLSession based on Combine.
-It provides a simple plugin system for intercepting network requests as well as stubbing out of the box.
+It provides a easy to use plugin system with a some preconfigured ones
+
+## Basic Example 
 
 ```
 let requestService = Bird.makeRequestService()
@@ -23,10 +25,14 @@ let subscription = request.sink(receiveCompletion: { completion in
 ## How to use
 
 The first thing you need to create is an Object conforming to the Request Protocol.
-This can be a struct, enum or class. It will provide all relevant values for making your http request.
+This can be a struct, enum or class. It will provide all relevant values for making a http-request.
 ```
 
 struct PokeAPI: Request {
+    var responseType: Codable.self {
+        // Currently just an Idea
+    }
+    
     var scheme: HTTPScheme {
         return .https
     }
@@ -52,8 +58,6 @@ struct PokeAPI: Request {
     }
 }
 ```
-
-After you created your Target you
 
 Feat
 * Logging
