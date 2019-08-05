@@ -1,16 +1,17 @@
 //
 //  AppDelegate.swift
-//  Example
+//  BirdExampleApp
 //
 //  Created by Sebastian Boldt on 04.08.19.
 //  Copyright © 2019 Sebastian Boldt. All rights reserved.
 //
 
 import UIKit
-import Bird
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+
+
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.

@@ -37,9 +37,7 @@ extension RequestService: RequestServiceProtocol {
         let urlRequest = try converter.convertRequest(request: request)
         let publisher = URLSession.DataTaskPublisher(request: urlRequest, session: session)
         
-        return publisher
-            .map { $0.data }
-            .decode(type: responseType, decoder: RequestService.decoder)
-            .eraseToAnyPublisher()
+        return publisher.map { return $0.data }
+                        .decode(type: responseType, decoder: RequestService.decoder).eraseToAnyPublisher()
     }
 }

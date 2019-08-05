@@ -1,6 +1,6 @@
 //
 //  SceneDelegate.swift
-//  Example
+//  BirdExampleApp
 //
 //  Created by Sebastian Boldt on 04.08.19.
 //  Copyright © 2019 Sebastian Boldt. All rights reserved.
