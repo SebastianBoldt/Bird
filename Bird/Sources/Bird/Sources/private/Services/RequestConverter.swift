@@ -1,3 +1,9 @@
+//
+//  RequestConverter.swift
+//
+//  Created by Sebastian Boldt on 07.07.19.
+//
+
 import Foundation
 
 protocol RequestConverterProtocol {
@@ -38,8 +44,9 @@ extension RequestConverter {
             case .data(let data):
                 urlRequest.httpBody = data
             case .jsonEncodable(let encodable):
-                try addJSONEncodedBody(encodable: encodable, to: urlRequest)
-            default:()
+                try addJSONEncodedBody(encodable: encodable, to: &urlRequest)
+            case .customJSONEncodable(let encodable, let encoder):
+                try addJSONEncodedBody(encodable: encodable, encoder: encoder, to: &urlRequest)
         }
         
         return urlRequest
@@ -49,8 +56,7 @@ extension RequestConverter {
 extension RequestConverter {
     func addJSONEncodedBody(encodable: Encodable,
                             encoder: JSONEncoder = JSONEncoder(),
-                            to urlRequest: URLRequest) throws -> URLRequest {
-        var urlRequest = urlRequest
+                            to urlRequest: inout URLRequest) throws {
         let anyEncodable = AnyEncodable(encodable: encodable)
         urlRequest.httpBody = try encoder.encode(anyEncodable)
 
@@ -59,49 +65,5 @@ extension RequestConverter {
             urlRequest.setValue(HTTPConstants.Header.Values.ContentType.applicationJSON,
                                 forHTTPHeaderField: contentTypeHeaderName)
         }
-        
-        return urlRequest
     }
 }
-
-/**
- public func urlRequest() throws -> URLRequest {
-     guard let requestURL = Foundation.URL(string: url) else {
-         throw MoyaError.requestMapping(url)
-     }
-
-     var request = URLRequest(url: requestURL)
-     request.httpMethod = method.rawValue
-     request.allHTTPHeaderFields = httpHeaderFields
-
-     switch task {
-     case .requestPlain, .uploadFile, .uploadMultipart, .downloadDestination:
-         return request
-     case .requestData(let data):
-         request.httpBody = data
-         return request
-     case let .requestJSONEncodable(encodable):
-         return try request.encoded(encodable: encodable)
-     case let .requestCustomJSONEncodable(encodable, encoder: encoder):
-         return try request.encoded(encodable: encodable, encoder: encoder)
-     case let .requestParameters(parameters, parameterEncoding):
-         return try request.encoded(parameters: parameters, parameterEncoding: parameterEncoding)
-     case let .uploadCompositeMultipart(_, urlParameters):
-         let parameterEncoding = URLEncoding(destination: .queryString)
-         return try request.encoded(parameters: urlParameters, parameterEncoding: parameterEncoding)
-     case let .downloadParameters(parameters, parameterEncoding, _):
-         return try request.encoded(parameters: parameters, parameterEncoding: parameterEncoding)
-     case let .requestCompositeData(bodyData: bodyData, urlParameters: urlParameters):
-         request.httpBody = bodyData
-         let parameterEncoding = URLEncoding(destination: .queryString)
-         return try request.encoded(parameters: urlParameters, parameterEncoding: parameterEncoding)
-     case let .requestCompositeParameters(bodyParameters: bodyParameters, bodyEncoding: bodyParameterEncoding, urlParameters: urlParameters):
-         if let bodyParameterEncoding = bodyParameterEncoding as? URLEncoding, bodyParameterEncoding.destination != .httpBody {
-             fatalError("Only URLEncoding that `bodyEncoding` accepts is URLEncoding.httpBody. Others like `default`, `queryString` or `methodDependent` are prohibited - if you want to use them, add your parameters to `urlParameters` instead.")
-         }
-         let bodyfulRequest = try request.encoded(parameters: bodyParameters, parameterEncoding: bodyParameterEncoding)
-         let urlEncoding = URLEncoding(destination: .queryString)
-         return try bodyfulRequest.encoded(parameters: urlParameters, parameterEncoding: urlEncoding)
-     }
- }
- */

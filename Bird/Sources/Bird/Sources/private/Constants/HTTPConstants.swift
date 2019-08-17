@@ -1,6 +1,5 @@
 //
-//  File.swift
-//  
+//  HTTPConstants.swift
 //
 //  Created by Sebastian Boldt on 17.08.19.
 //

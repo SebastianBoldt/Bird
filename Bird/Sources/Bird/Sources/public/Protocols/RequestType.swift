@@ -16,4 +16,7 @@ public enum RequestType {
     
     // A Request with encodable body
     case jsonEncodable(Encodable)
+    
+    // A Request with a custom JSONEncoder Object
+    case customJSONEncodable(Encodable, encoder: JSONEncoder)
 }

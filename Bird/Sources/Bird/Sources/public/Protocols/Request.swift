@@ -6,9 +6,6 @@
 //
 
 import Foundation
-/**
-    The API protocol provides predefined properties for describing your API request
- */
 public protocol Request {
     var scheme: HTTPScheme { get }
     var url: URL { get }

@@ -1,7 +1,6 @@
 //
 //  RequestService.swift
 //  
-//
 //  Created by Sebastian Boldt on 07.07.19.
 //
 
