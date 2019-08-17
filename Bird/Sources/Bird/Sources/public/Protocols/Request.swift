@@ -6,7 +6,6 @@
 //
 
 import Foundation
-
 /**
     The API protocol provides predefined properties for describing your API request
  */
@@ -15,6 +14,6 @@ public protocol Request {
     var url: URL { get }
     var path: String { get }
     var method: HTTPMethod { get }
-    var parameters: [String: Codable] { get }
     var headers: [String: String] { get }
+    var requestType: RequestType { get }
 }

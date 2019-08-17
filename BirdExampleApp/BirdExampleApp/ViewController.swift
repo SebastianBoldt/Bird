@@ -9,9 +9,6 @@
 import UIKit
 import Bird
 import Combine
-struct Pokemon: Codable {
-    var name: String?
-}
 
 class ViewController: UIViewController {
     @IBOutlet weak var label: UILabel?

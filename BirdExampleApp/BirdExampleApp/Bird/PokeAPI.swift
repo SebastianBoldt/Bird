@@ -10,6 +10,8 @@ import Foundation
 import Bird
 
 struct PokeAPI: Request {
+    var requestType: RequestType = .plain
+    
     var scheme: HTTPScheme {
         return .https
     }

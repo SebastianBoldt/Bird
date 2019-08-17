@@ -12,7 +12,7 @@ public typealias DataTaskPublisherResponse = AnyPublisher<URLSession.DataTaskPub
 
 public protocol RequestServiceProtocol {
     func request(request: Request) throws -> DataTaskPublisherResponse
-    func request<T>(_ request: Request, responseType: T.Type) throws -> AnyPublisher<T, Error> where T : Decodable
+    func request<T: Decodable>(_ request: Request, responseType: T.Type) throws -> AnyPublisher<T, Error>
 }
 
 class RequestService: NSObject {
