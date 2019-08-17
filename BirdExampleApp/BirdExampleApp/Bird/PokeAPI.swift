@@ -19,7 +19,7 @@ struct PokeAPI: RequestDefinition {
     }
     
     var plugins: [Plugin] {
-        return []
+        return [ExamplePlugin()]
     }
     
     var scheme: Scheme {

@@ -36,8 +36,13 @@ extension RequestService: RequestServiceProtocol {
             $0.willSend(request: urlRequest, definition: request)
         }
         
-        //TODO:
-        return URLSession.DataTaskPublisher(request: urlRequest, session: session).eraseToAnyPublisher()
+        return URLSession.DataTaskPublisher(request: urlRequest, session: session).map { data, response -> URLSession.DataTaskPublisher.Output  in
+            request.plugins.forEach { _ in
+                print("didSend")
+            }
+            
+            return (data: data, response: response)
+        }.eraseToAnyPublisher()
     }
     
     public func request<T: Decodable>(_ request: RequestDefinition,

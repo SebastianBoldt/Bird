@@ -3,4 +3,118 @@
    uuid = "844E1B13-E232-44D0-942D-C010953C6AD6"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5C298278-34D4-4B4F-BE9C-2EE9022868B8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BirdExampleApp/BirdExampleApp/Bird/ExamplePlugin.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "prepare(request:definition:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6D40CD84-A38A-449F-B46C-8726BA5AD8FB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BirdExampleApp/BirdExampleApp/Bird/ExamplePlugin.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "willSend(request:definition:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6C685643-BACA-4ED3-AB02-4778AECFCACA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BirdExampleApp/BirdExampleApp/Bird/ExamplePlugin.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "didReceive(result:definition:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FB6A735E-D967-4394-95F6-F4CF86F5369B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bird/Sources/Bird/Sources/public/Services/RequestService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "request(request:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "FB6A735E-D967-4394-95F6-F4CF86F5369B - d3e6d3150cf19f18"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Bird.RequestService.request(request: Bird.RequestDefinition) throws -&gt; Combine.AnyPublisher&lt;(data: Foundation.Data, response: __C.NSURLResponse), Foundation.URLError&gt;"
+                  moduleName = "BirdExampleApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sebastianboldt/Developer/iOS-Projects/Bird/Bird/Sources/Bird/Sources/public/Services/RequestService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "530">
+               </Location>
+               <Location
+                  uuid = "FB6A735E-D967-4394-95F6-F4CF86F5369B - 741c1a2a47716d77"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Bird.Plugin) -&gt; () in Bird.RequestService.request(request: Bird.RequestDefinition) throws -&gt; Combine.AnyPublisher&lt;(data: Foundation.Data, response: __C.NSURLResponse), Foundation.URLError&gt;"
+                  moduleName = "BirdExampleApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sebastianboldt/Developer/iOS-Projects/Bird/Bird/Sources/Bird/Sources/public/Services/RequestService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "120">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C5956371-6DCB-4F65-9204-32C4D59FAD06"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bird/Sources/Bird/Sources/public/Services/RequestService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "request(request:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

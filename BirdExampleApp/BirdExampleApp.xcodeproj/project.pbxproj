@@ -15,6 +15,7 @@
 		154BB29522F78324009D4111 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 154BB29322F78324009D4111 /* LaunchScreen.storyboard */; };
 		154BB29E22F78336009D4111 /* Bird in Frameworks */ = {isa = PBXBuildFile; productRef = 154BB29D22F78336009D4111 /* Bird */; };
 		154BB2A022F783E4009D4111 /* PokeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154BB29F22F783E4009D4111 /* PokeAPI.swift */; };
+		1596D3882308AD9700F17148 /* ExamplePlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1596D3872308AD9700F17148 /* ExamplePlugin.swift */; };
 		15CB34152307F166002032B7 /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CB34142307F166002032B7 /* Pokemon.swift */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +29,7 @@
 		154BB29422F78324009D4111 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		154BB29622F78324009D4111 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		154BB29F22F783E4009D4111 /* PokeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeAPI.swift; sourceTree = "<group>"; };
+		1596D3872308AD9700F17148 /* ExamplePlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamplePlugin.swift; sourceTree = "<group>"; };
 		15CB34142307F166002032B7 /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,6 +97,7 @@
 			children = (
 				154BB29F22F783E4009D4111 /* PokeAPI.swift */,
 				15CB34132307F14E002032B7 /* ResponseModels */,
+				1596D3872308AD9700F17148 /* ExamplePlugin.swift */,
 			);
 			path = Bird;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 				154BB2A022F783E4009D4111 /* PokeAPI.swift in Sources */,
 				154BB28922F78320009D4111 /* AppDelegate.swift in Sources */,
 				154BB28B22F78320009D4111 /* SceneDelegate.swift in Sources */,
+				1596D3882308AD9700F17148 /* ExamplePlugin.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

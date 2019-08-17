@@ -19,7 +19,7 @@ class ViewController: UIViewController {
         
         let requestService = Bird.makeRequestService()
         let r = PokeAPI()
-        let request = try! requestService.request(r, responseType: Pokemon.self)
+        let request = try! requestService.request(request: r)
         subscription = request.receive(on: RunLoop.main).sink(receiveCompletion: { completion in
             switch completion {
                 case .finished:
@@ -33,7 +33,7 @@ class ViewController: UIViewController {
             }
         }, receiveValue: { pokemon in
             print(pokemon)
-            self.label?.text = pokemon.name
+            //self.label?.text = pokemon.name
         })
     }
 
