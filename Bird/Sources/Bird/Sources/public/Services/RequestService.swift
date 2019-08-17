@@ -10,8 +10,8 @@ import Combine
 public typealias DataTaskPublisherResponse = AnyPublisher<URLSession.DataTaskPublisher.Output, URLSession.DataTaskPublisher.Failure>
 
 public protocol RequestServiceProtocol {
-    func request(request: Request) throws -> DataTaskPublisherResponse
-    func request<T: Decodable>(_ request: Request, responseType: T.Type) throws -> AnyPublisher<T, Error>
+    func request(request: RequestDefinition) throws -> DataTaskPublisherResponse
+    func request<T: Decodable>(_ request: RequestDefinition, responseType: T.Type) throws -> AnyPublisher<T, Error>
 }
 
 class RequestService: NSObject {
@@ -24,13 +24,23 @@ class RequestService: NSObject {
 }
 
 extension RequestService: RequestServiceProtocol {
-    public func request(request: Request) throws -> AnyPublisher<URLSession.DataTaskPublisher.Output, URLSession.DataTaskPublisher.Failure> {
+    public func request(request: RequestDefinition) throws -> AnyPublisher<URLSession.DataTaskPublisher.Output, URLSession.DataTaskPublisher.Failure> {
         let session = URLSession(configuration: .default)
-        let urlRequest = try converter.convertRequest(request: request)
+        var urlRequest = try converter.convertRequest(request: request)
+        
+        request.plugins.forEach {
+            urlRequest = $0.prepare(request: urlRequest, definition: request)
+        }
+        
+        request.plugins.forEach {
+            $0.willSend(request: urlRequest, definition: request)
+        }
+        
+        //TODO:
         return URLSession.DataTaskPublisher(request: urlRequest, session: session).eraseToAnyPublisher()
     }
     
-    public func request<T: Decodable>(_ request: Request,
+    public func request<T: Decodable>(_ request: RequestDefinition,
                                       responseType: T.Type) throws -> AnyPublisher<T, Error>{
         let session = URLSession(configuration: .default)
         let urlRequest = try converter.convertRequest(request: request)

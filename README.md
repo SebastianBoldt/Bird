@@ -28,10 +28,6 @@ This can be a struct, enum or class. It will provide all relevant values for mak
 ```
 
 struct PokeAPI: Request {
-    var responseType: Codable.self {
-        // Currently just an Idea
-    }
-
     var scheme: HTTPScheme {
         return .https
     }
@@ -66,7 +62,7 @@ struct PokeAPI: Request {
 * requestFailed
 * requestSucceeded
 
-Feat
-* Logging
+## Coming Soon
+
 * Stubbing
-* Intercepting Requests
+* nested URL Parameters

@@ -7,16 +7,13 @@
 
 import Foundation
 
-public enum RequestType {
-    // A Request made with no additional Data
-    case plain
-    
-    // A Request with a body filled with data
-    case data(data: Data)
-    
-    // A Request with encodable body
-    case jsonEncodable(Encodable)
-    
-    // A Request with a custom JSONEncoder Object
-    case customJSONEncodable(Encodable, encoder: JSONEncoder)
+public enum BodyParameterType {
+    case data(Data)
+    case JSON(Encodable)
+    case customJSON(Encodable, encoder: JSONEncoder)
 }
+
+/**
+  Add a parameters type
+ */
+

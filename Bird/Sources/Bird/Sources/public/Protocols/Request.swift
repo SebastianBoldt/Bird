@@ -6,11 +6,14 @@
 //
 
 import Foundation
-public protocol Request {
-    var scheme: HTTPScheme { get }
+
+public protocol RequestDefinition {
+    var scheme: Scheme { get }
     var url: URL { get }
     var path: String { get }
     var method: HTTPMethod { get }
     var headers: [String: String] { get }
-    var requestType: RequestType { get }
+    var urlParameters: [String: String] { get }
+    var bodyParameterType: BodyParameterType? { get }
+    var plugins: [Plugin] { get }
 }

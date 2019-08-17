@@ -7,11 +7,11 @@
 import Foundation
 
 protocol RequestConverterProtocol {
-    func convertRequest(request: Request) throws -> URLRequest
+    func convertRequest(request: RequestDefinition) throws -> URLRequest
 }
 
 final class RequestConverter: RequestConverterProtocol {
-    public func convertRequest(request: Request) throws -> URLRequest {
+    public func convertRequest(request: RequestDefinition) throws -> URLRequest {
         guard let url = try makeURL(from: request) else {
             throw URLRequestConvertibleError.couldNotCreate(description: "Could not create components")
         }
@@ -19,33 +19,34 @@ final class RequestConverter: RequestConverterProtocol {
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = request.method.rawValue
         urlRequest.allHTTPHeaderFields = request.headers
-        
-        let requestWithParamters = try attachParameters(from: request, to: urlRequest)
-        return requestWithParamters
+
+        guard let bodyParamterType = request.bodyParameterType else {
+            return urlRequest
+        }
+        return try prepareBody(of: urlRequest, with: bodyParamterType)
     }
 }
 
 extension RequestConverter {
-    private func makeURL(from request: Request) throws -> URL? {
+    private func makeURL(from request: RequestDefinition) throws -> URL? {
         guard var components = URLComponents(string: request.url.absoluteString) else {
             throw URLRequestConvertibleError.couldNotCreate(description: "Could not create components")
         }
         
+        components.query = try makeQueryString(from: request.urlParameters)
         components.scheme = request.scheme.stringValue
         components.path = request.path
         return components.url
     }
     
-    private func attachParameters(from request: Request, to urlRequest: URLRequest) throws -> URLRequest {
+    private func prepareBody(of urlRequest: URLRequest, with bodyParameterType: BodyParameterType) throws -> URLRequest {
         var urlRequest = urlRequest
-        switch request.requestType {
-            case .plain:
-                return urlRequest
+        switch bodyParameterType {
             case .data(let data):
                 urlRequest.httpBody = data
-            case .jsonEncodable(let encodable):
+            case .JSON(let encodable):
                 try addJSONEncodedBody(encodable: encodable, to: &urlRequest)
-            case .customJSONEncodable(let encodable, let encoder):
+            case .customJSON(let encodable, let encoder):
                 try addJSONEncodedBody(encodable: encodable, encoder: encoder, to: &urlRequest)
         }
         
@@ -65,5 +66,19 @@ extension RequestConverter {
             urlRequest.setValue(HTTPConstants.Header.Values.ContentType.applicationJSON,
                                 forHTTPHeaderField: contentTypeHeaderName)
         }
+    }
+}
+
+extension RequestConverter {
+    private func makeQueryString(from parameters: [String: String]) throws -> String {
+        var components: [(String, String)] = []
+
+        for key in parameters.keys {
+            guard let value = parameters[key] else {
+                continue
+            }
+            components.append((key, value))
+        }
+        return components.map { "\($0)=\($1)" }.joined(separator: "&")
     }
 }

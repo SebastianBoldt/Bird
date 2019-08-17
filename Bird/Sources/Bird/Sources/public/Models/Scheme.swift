@@ -6,13 +6,13 @@
 
 import Foundation
 
-public enum HTTPScheme {
+public enum Scheme {
     case http
     case https
     case custom(scheme: String)
 }
 
-extension HTTPScheme {
+extension Scheme {
     public var stringValue: String {
         switch self {
             case .http:

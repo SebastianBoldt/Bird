@@ -9,10 +9,20 @@
 import Foundation
 import Bird
 
-struct PokeAPI: Request {
-    var requestType: RequestType = .plain
+struct PokeAPI: RequestDefinition {    
+    var urlParameters: [String : String] {
+        return [:]
+    }
     
-    var scheme: HTTPScheme {
+    var bodyParameterType: BodyParameterType? {
+        return nil
+    }
+    
+    var plugins: [Plugin] {
+        return []
+    }
+    
+    var scheme: Scheme {
         return .https
     }
 
