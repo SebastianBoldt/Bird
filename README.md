@@ -1,5 +1,12 @@
 ![Bird](https://github.com/SebastianBoldt/Bird/blob/develop/Bird/Github/Header.jpg?raw=true)
 
+<a href="https://paypal.me/boldtsebastian"><img src="https://img.shields.io/badge/paypal-donate-blue.svg?longCache=true&style=flat-square" alt="current version" /></a>
+<a href="https://cocoapods.org/pods/Jelly"><img src="https://img.shields.io/badge/version-0.0.1-green.svg?longCache=true&style=flat-square" alt="current version" /></a>
+<a href="http://twitter.com/sebastianboldt"><img src="https://img.shields.io/badge/twitter-@sebastianboldt-blue.svg?longCache=true&style=flat-square" alt="twitter handle" /></a>
+<a href="https://developer.apple.com/swift"><img src="https://img.shields.io/badge/swift5.0-compatible-orange.svg?longCache=true&style=flat-square" alt="Swift 5.0 compatible" /></a>
+<a><img src="https://img.shields.io/badge/spm-compatible-green.svg?longCache=true&style=flat-square" alt="SPM Support" /></a>
+<a href="https://en.wikipedia.org/wiki/MIT_License"><img src="https://img.shields.io/badge/license-MIT-lightgray.svg?longCache=true&style=flat-square" alt="license" /></a>
+
 # 🐤 Bird
 
 Bird is a lightweight HTTP networking library written in Swift. <br />
