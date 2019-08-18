@@ -10,4 +10,7 @@
    <FileRef
       location = "group:Bird">
    </FileRef>
+   <FileRef
+      location = "group:Bird.xctestplan">
+   </FileRef>
 </Workspace>

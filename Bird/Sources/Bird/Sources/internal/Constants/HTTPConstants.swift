@@ -6,6 +6,9 @@
 
 import Foundation
 
+/**
+    `HTTPConstants` contains all Constants related to HTTPRequests
+ */
 struct HTTPConstants {
     struct Header {
         struct Keys {

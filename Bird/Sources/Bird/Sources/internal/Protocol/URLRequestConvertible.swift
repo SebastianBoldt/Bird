@@ -6,10 +6,9 @@
 
 import Foundation
 
-enum URLRequestConvertibleError: Error {
-    case couldNotCreate(description: String)
-}
-
+/**
+ Protocol that defines the function signatiure of an Object that is convertible to an ``URLRequest``
+ */
 public protocol URLRequestConvertible {
     func convertToURLRequest() throws -> URLRequest
 }

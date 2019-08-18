@@ -6,8 +6,9 @@
 
 public struct Bird {
     public static func makeRequestService() -> RequestServiceProtocol {
-        let requestConverter = RequestConverter()
-        let requestService = RequestService(converter: requestConverter)
+        let requestConverter = RequestConverter(urlCreator: URLCreator(),
+                                                bodyPreparator: BodyPreparator())
+        let requestService = RequestService(converter: requestConverter, pluginHandler: PluginHandler())
         return requestService
     }
 }

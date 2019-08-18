@@ -14,6 +14,10 @@ It is based on Combine and focused on maintain- and extendability.
 
 ## How to
 
+### Step 0: Install
+
+Bird is can be integrated into your Project using SPM.
+
 ### Step 1: Create a Request
 
 The first thing you need to create is an Object that conforms to the `RequestDefinition`-Protocol.<br />

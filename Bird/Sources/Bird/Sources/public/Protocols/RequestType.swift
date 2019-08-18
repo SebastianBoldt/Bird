@@ -12,8 +12,3 @@ public enum BodyParameterType {
     case JSON(Encodable)
     case customJSON(Encodable, encoder: JSONEncoder)
 }
-
-/**
-  Add a parameters type
- */
-

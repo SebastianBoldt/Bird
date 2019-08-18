@@ -6,9 +6,16 @@
 
 import Foundation
 
+/**
+ ``AnyEncodable`` is a Type that boxes any ``Encodable`` Object
+ so it can be used where Protocols can't
+*/
 struct AnyEncodable {
     private let encodable: Encodable
     
+    /**
+     - Parameter encodable: The boxed object
+     */
     init(encodable: Encodable) {
         self.encodable = encodable
     }

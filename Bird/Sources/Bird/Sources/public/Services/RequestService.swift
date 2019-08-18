@@ -16,10 +16,13 @@ public protocol RequestServiceProtocol {
 
 class RequestService: NSObject {
     private let converter: RequestConverterProtocol
+    private let pluginHandler: PluginHandlerProtocol
+    
     private static let decoder = JSONDecoder()
     
-    init(converter: RequestConverterProtocol) {
+    init(converter: RequestConverterProtocol, pluginHandler: PluginHandlerProtocol) {
         self.converter = converter
+        self.pluginHandler = pluginHandler
     }
 }
 
@@ -28,14 +31,10 @@ extension RequestService: RequestServiceProtocol {
         let session = URLSession(configuration: .default)
         var urlRequest = try converter.convertRequest(requestDefinition: requestDefinition)
         
-        urlRequest = makePreRequestPluginCalls(definition: requestDefinition, to: urlRequest)
+        urlRequest = pluginHandler.makePreRequestPluginCalls(definition: requestDefinition, to: urlRequest)
         
         return URLSession.DataTaskPublisher(request: urlRequest, session: session).map { data, response -> URLSession.DataTaskPublisher.Output  in
-            requestDefinition.plugins.forEach {
-                let result: URLSession.DataTaskPublisher.Output = (data: data, response: response)
-                $0.didReceive(result: result, definition: requestDefinition)
-            }
-            
+            self.pluginHandler.makePostRequestPluginCalls(data, response, requestDefinition)
             return (data: data, response: response)
         }.eraseToAnyPublisher()
     }
@@ -45,26 +44,14 @@ extension RequestService: RequestServiceProtocol {
         let session = URLSession(configuration: .default)
         var urlRequest = try converter.convertRequest(requestDefinition: requestDefinition)
         
-        urlRequest = makePreRequestPluginCalls(definition: requestDefinition, to: urlRequest)
+        urlRequest = pluginHandler.makePreRequestPluginCalls(definition: requestDefinition, to: urlRequest)
 
         let publisher = URLSession.DataTaskPublisher(request: urlRequest, session: session)
-        return publisher.map { return $0.data }
-                        .decode(type: responseType, decoder: RequestService.decoder).eraseToAnyPublisher()
-    }
-}
-
-extension RequestService {
-    func makePreRequestPluginCalls(definition: RequestDefinition, to urlRequest: URLRequest) -> URLRequest {
-        var urlRequest = urlRequest
-        
-        definition.plugins.forEach {
-            urlRequest = $0.prepare(request: urlRequest, definition: definition)
-        }
-        
-        definition.plugins.forEach {
-            $0.willSend(request: urlRequest, definition: definition)
-        }
-        
-        return urlRequest
+        return publisher.map { data, response -> URLSession.DataTaskPublisher.Output in
+            self.pluginHandler.makePostRequestPluginCalls(data, response, requestDefinition)
+            return (data: data, response: response)
+        }.map {
+            return $0.data
+        }.decode(type: responseType, decoder: RequestService.decoder).eraseToAnyPublisher()
     }
 }
