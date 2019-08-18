@@ -3,6 +3,7 @@
 # 🐤 Bird
 
 Bird is a lightweight HTTP networking library written in Swift 
+
 based on Combine and focused on maintain- and extendability.
 
 ## How to
@@ -10,9 +11,11 @@ based on Combine and focused on maintain- and extendability.
 ### Step 1: Create a Request
 
 The first thing you need to create is an Object that conforms to the `RequestDefinition`-Protocol.
+
 This can be a struct, enum or class. It will provide all relevant values for making an actual HTTP-request.
 
-In this Example we create a `RequestDefinition`  
+In this Example we create a `RequestDefinition`
+
 for an Endpoint of the `PokeAPI` that returns a Pokemon by its Pokdex-Number:
 
 ```swift
@@ -42,6 +45,7 @@ extension GetPokemon {
 ### Step 2: Create a Model
 
 Create the expected Model that will be returned by the Server. 
+
 It has to be ``Codable``.
 
 ```swift
@@ -53,6 +57,7 @@ struct Pokemon: Codable {
 ### Step 3: Create a RequestService
 
 After the Model was declared you need to create an Instance of Type: ```RequestService```
+
 You can do that by calling a static function on the class ``Bird``.
 
 ```swift
@@ -62,6 +67,7 @@ let requestService = Bird.makeRequestService()
 ### Step 4: Make the Request
 
 Because Bird is using ``Combine``  you will be familiar with the semantics and the following lines of code.
+
 Just ``sink`` & go to receive the response you requested.
 
 ```swift
@@ -82,6 +88,7 @@ subscription = request.receive(on: RunLoop.main).sink(receiveCompletion: { compl
 ## Plugins
 
 Plugins can be used to prepare requests or log responses.
+
 Currenty a ``Plugin`` supports 3 different Types of interception.
 
 * prepare
