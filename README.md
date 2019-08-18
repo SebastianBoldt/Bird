@@ -2,7 +2,8 @@
 
 # 🐤 Bird
 
-Bird is a lightweight HTTP networking library written in Swift based on Combine focued on maintain- and extendability.
+Bird is a lightweight HTTP networking library written in Swift 
+based on Combine and focused on maintain- and extendability.
 
 ## How to
 
@@ -14,7 +15,7 @@ This can be a struct, enum or class. It will provide all relevant values for mak
 In this Example we create a `RequestDefinition`  
 for an Endpoint of the `PokeAPI` that returns a Pokemon by its Pokdex-Number:
 
-```
+```swift
 struct GetPokemon: RequestDefinition {
     let pokedexNumber: Int
     
@@ -43,7 +44,7 @@ extension GetPokemon {
 Create the expected Model that will be returned by the Server. 
 It has to be ``Codable``.
 
-```
+```swift
 struct Pokemon: Codable {
     var name: String?
 }
@@ -54,7 +55,7 @@ struct Pokemon: Codable {
 After the Model was declared you need to create an Instance of Type: ```RequestService```
 You can do that by calling a static function on the class ``Bird``.
 
-```
+```swift
 let requestService = Bird.makeRequestService()
 ```
 
@@ -63,7 +64,7 @@ let requestService = Bird.makeRequestService()
 Because Bird is using ``Combine``  you will be familiar with the semantics and the following lines of code.
 Just ``sink`` & go to receive the response you requested.
 
-```
+```swift
 let defition = GetPokemon(pokedexNumber: 3)
 let request = try! requestService.request(defintion, responseType: Pokemon.self)
 subscription = request.receive(on: RunLoop.main).sink(receiveCompletion: { completion in
@@ -87,7 +88,7 @@ Currenty a ``Plugin`` supports 3 different Types of interception.
 * willSend
 * didReceive
 
-```
+```swift
 struct ExamplePlugin: Plugin {
     func prepare(request: URLRequest, definition: RequestDefinition) -> URLRequest {
         // Manipulate the request with Authorization Headers etc. 
