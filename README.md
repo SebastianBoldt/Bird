@@ -132,7 +132,7 @@ struct ExamplePlugin: Plugin {
 
 ## Author 
 
-![Me](https://github.com/SebastianBoldt/Bird/blob/develop/Bird/Github/emoji.png?raw=true)
+<img src="https://github.com/SebastianBoldt/Bird/blob/master/Bird/Github/emoji.png?raw=true" width="200">
 
 Sebastian Boldt, https://www.sebastianboldt.com 
 
