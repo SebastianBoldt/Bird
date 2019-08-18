@@ -9,12 +9,12 @@
 
 # 🐤 Bird α
 
-Bird is a lightweight *HTTP`* networking library written in *Swift*. <br />
+Bird is a lightweight *HTTP* networking library written in *Swift*. <br />
 It is based on *Apple*s new Reactive Framework *Combine* and focused on maintain- and extendability.
 
 ## How to
 
-### Step 0: Install
+### Step 0: Install 🤝
 If the first version is ready,  <br />
 **Bird** will be available via *SPM*. <br />
 ```
@@ -23,7 +23,7 @@ dependencies: [
 ]
 ```
 
-### Step 1: Create a Request
+### Step 1: Create a Request ⚙️
 
 The first thing you need to create is an Object that conforms to the `RequestDefinition`-Protocol.<br />
 This can be a struct, enum or class. It will provide all relevant values for making an actual *HTTP*-request.<br />
@@ -54,7 +54,7 @@ extension GetPokemon {
 }
 ```
 
-### Step 2: Create a Model
+### Step 2: Create a Model 👩
 
 Create the expected Model that will be returned by the Server. <br />
 It has to be ``Codable``.
@@ -65,7 +65,7 @@ struct Pokemon: Codable {
 }
 ```
 
-### Step 3: Create a RequestService
+### Step 3: Create a RequestService 🐦
 
 After the Model was declared you need to create an Instance of Type: ```RequestService```<br />
 You can do that by calling a static function on the class ``Bird``.
@@ -74,7 +74,7 @@ You can do that by calling a static function on the class ``Bird``.
 let requestService = Bird.makeRequestService()
 ```
 
-### Step 4: Make the Request
+### Step 4: Make the Request 🦅
 
 Because Bird is using ``Combine``  you will be familiar with the semantics. <br />
 Just ``sink`` & go to receive the response you requested.
@@ -94,7 +94,7 @@ subscription = request.receive(on: RunLoop.main).sink(receiveCompletion: { compl
 })
 ```
 
-## Plugins
+## Plugins ⚡️
 
 Plugins can be used e.g. to prepare requests or log responses.<br />
 A ``Plugin`` will be notified by 3 different function calls.
@@ -120,7 +120,7 @@ struct ExamplePlugin: Plugin {
 }
 ```
 
-## Planned Features
+## Planned Features 🕘
 
 * Stubbing
 * PublisherPlugins
