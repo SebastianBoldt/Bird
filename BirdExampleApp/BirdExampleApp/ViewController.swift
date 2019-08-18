@@ -19,7 +19,7 @@ class ViewController: UIViewController {
         
         let requestService = Bird.makeRequestService()
         let r = PokeAPI()
-        let request = try! requestService.request(request: r)
+        let request = try! requestService.request(requestDefinition: r)
         subscription = request.receive(on: RunLoop.main).sink(receiveCompletion: { completion in
             switch completion {
                 case .finished:

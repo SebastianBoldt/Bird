@@ -7,20 +7,20 @@
 import Foundation
 
 protocol RequestConverterProtocol {
-    func convertRequest(request: RequestDefinition) throws -> URLRequest
+    func convertRequest(requestDefinition: RequestDefinition) throws -> URLRequest
 }
 
 final class RequestConverter: RequestConverterProtocol {
-    public func convertRequest(request: RequestDefinition) throws -> URLRequest {
-        guard let url = try makeURL(from: request) else {
+    public func convertRequest(requestDefinition: RequestDefinition) throws -> URLRequest {
+        guard let url = try makeURL(from: requestDefinition) else {
             throw URLRequestConvertibleError.couldNotCreate(description: "Could not create components")
         }
         
         var urlRequest = URLRequest(url: url)
-        urlRequest.httpMethod = request.method.rawValue
-        urlRequest.allHTTPHeaderFields = request.headers
+        urlRequest.httpMethod = requestDefinition.method.rawValue
+        urlRequest.allHTTPHeaderFields = requestDefinition.headers
 
-        guard let bodyParamterType = request.bodyParameterType else {
+        guard let bodyParamterType = requestDefinition.bodyParameterType else {
             return urlRequest
         }
         return try prepareBody(of: urlRequest, with: bodyParamterType)
@@ -28,14 +28,14 @@ final class RequestConverter: RequestConverterProtocol {
 }
 
 extension RequestConverter {
-    private func makeURL(from request: RequestDefinition) throws -> URL? {
-        guard var components = URLComponents(string: request.url.absoluteString) else {
+    private func makeURL(from requestDefinition: RequestDefinition) throws -> URL? {
+        guard var components = URLComponents(string: requestDefinition.url.absoluteString) else {
             throw URLRequestConvertibleError.couldNotCreate(description: "Could not create components")
         }
         
-        components.query = try makeQueryString(from: request.urlParameters)
-        components.scheme = request.scheme.stringValue
-        components.path = request.path
+        components.query = try makeQueryString(from: requestDefinition.urlParameters)
+        components.scheme = requestDefinition.scheme.stringValue
+        components.path = requestDefinition.path
         return components.url
     }
     

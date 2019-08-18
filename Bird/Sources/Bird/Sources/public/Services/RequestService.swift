@@ -10,8 +10,8 @@ import Combine
 public typealias DataTaskPublisherResponse = AnyPublisher<URLSession.DataTaskPublisher.Output, URLSession.DataTaskPublisher.Failure>
 
 public protocol RequestServiceProtocol {
-    func request(request: RequestDefinition) throws -> DataTaskPublisherResponse
-    func request<T: Decodable>(_ request: RequestDefinition, responseType: T.Type) throws -> AnyPublisher<T, Error>
+    func request(requestDefinition: RequestDefinition) throws -> DataTaskPublisherResponse
+    func request<T: Decodable>(_ requestDefinition: RequestDefinition, responseType: T.Type) throws -> AnyPublisher<T, Error>
 }
 
 class RequestService: NSObject {
@@ -24,34 +24,47 @@ class RequestService: NSObject {
 }
 
 extension RequestService: RequestServiceProtocol {
-    public func request(request: RequestDefinition) throws -> AnyPublisher<URLSession.DataTaskPublisher.Output, URLSession.DataTaskPublisher.Failure> {
+    public func request(requestDefinition: RequestDefinition) throws -> AnyPublisher<URLSession.DataTaskPublisher.Output, URLSession.DataTaskPublisher.Failure> {
         let session = URLSession(configuration: .default)
-        var urlRequest = try converter.convertRequest(request: request)
+        var urlRequest = try converter.convertRequest(requestDefinition: requestDefinition)
         
-        request.plugins.forEach {
-            urlRequest = $0.prepare(request: urlRequest, definition: request)
-        }
-        
-        request.plugins.forEach {
-            $0.willSend(request: urlRequest, definition: request)
-        }
+        urlRequest = makePreRequestPluginCalls(definition: requestDefinition, to: urlRequest)
         
         return URLSession.DataTaskPublisher(request: urlRequest, session: session).map { data, response -> URLSession.DataTaskPublisher.Output  in
-            request.plugins.forEach { _ in
-                print("didSend")
+            requestDefinition.plugins.forEach {
+                let result: URLSession.DataTaskPublisher.Output = (data: data, response: response)
+                $0.didReceive(result: result, definition: requestDefinition)
             }
             
             return (data: data, response: response)
         }.eraseToAnyPublisher()
     }
     
-    public func request<T: Decodable>(_ request: RequestDefinition,
+    public func request<T: Decodable>(_ requestDefinition: RequestDefinition,
                                       responseType: T.Type) throws -> AnyPublisher<T, Error>{
         let session = URLSession(configuration: .default)
-        let urlRequest = try converter.convertRequest(request: request)
-        let publisher = URLSession.DataTaskPublisher(request: urlRequest, session: session)
+        var urlRequest = try converter.convertRequest(requestDefinition: requestDefinition)
         
+        urlRequest = makePreRequestPluginCalls(definition: requestDefinition, to: urlRequest)
+
+        let publisher = URLSession.DataTaskPublisher(request: urlRequest, session: session)
         return publisher.map { return $0.data }
                         .decode(type: responseType, decoder: RequestService.decoder).eraseToAnyPublisher()
+    }
+}
+
+extension RequestService {
+    func makePreRequestPluginCalls(definition: RequestDefinition, to urlRequest: URLRequest) -> URLRequest {
+        var urlRequest = urlRequest
+        
+        definition.plugins.forEach {
+            urlRequest = $0.prepare(request: urlRequest, definition: definition)
+        }
+        
+        definition.plugins.forEach {
+            $0.willSend(request: urlRequest, definition: definition)
+        }
+        
+        return urlRequest
     }
 }

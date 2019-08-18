@@ -10,6 +10,14 @@ import Bird
 import Foundation
 
 struct ExamplePlugin: Plugin {
+    func didReceive(result: URLSession.DataTaskPublisher.Output, definition: RequestDefinition) {
+        
+    }
+    
+    func process(result: DataTaskPublisherResponse) -> DataTaskPublisherResponse {
+        return result
+    }
+    
     func prepare(request: URLRequest, definition: RequestDefinition) -> URLRequest {
         print(#function)
         return request
@@ -19,7 +27,7 @@ struct ExamplePlugin: Plugin {
         print(#function)
     }
     
-    func didReceive(result: Any, definition: RequestDefinition) {
+    func didReceive(result: DataTaskPublisherResponse, definition: RequestDefinition) {
         print(#function)
     }
 }
