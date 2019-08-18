@@ -76,7 +76,7 @@ You can do that by calling a static function on the class ``Bird``.
 let requestService = Bird.makeRequestService()
 ```
 
-### Step 4: Make the Request 🦅
+### Step 4: Make a Request 🦅
 
 Because Bird is using ``Combine``  you will be familiar with the semantics. <br />
 Just ``sink`` & go to receive the response you requested.
