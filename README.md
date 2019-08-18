@@ -1,7 +1,7 @@
 ![Bird](https://github.com/SebastianBoldt/Bird/blob/develop/Bird/Github/Header.jpg?raw=true)
 
 <a href="https://paypal.me/boldtsebastian"><img src="https://img.shields.io/badge/paypal-donate-blue.svg?longCache=true&style=flat-square" alt="current version" /></a>
-<a><img src="https://img.shields.io/badge/version-0.0.0-green.svg?longCache=true&style=flat-square" alt="current version" /></a>
+<a><img src="https://img.shields.io/badge/version-α-green.svg?longCache=true&style=flat-square" alt="current version" /></a>
 <a href="http://twitter.com/sebastianboldt"><img src="https://img.shields.io/badge/twitter-@sebastianboldt-blue.svg?longCache=true&style=flat-square" alt="twitter handle" /></a>
 <a href="https://developer.apple.com/swift"><img src="https://img.shields.io/badge/swift5.0-compatible-orange.svg?longCache=true&style=flat-square" alt="Swift 5.0 compatible" /></a>
 <a><img src="https://img.shields.io/badge/spm-compatible-green.svg?longCache=true&style=flat-square" alt="SPM Support" /></a>
@@ -17,9 +17,9 @@ It is based on *Apple*s new Reactive Framework *Combine* and focused on maintain
 ### Step 0: Install 🤝
 If the first version is ready,  <br />
 **Bird** will be available via *SPM*. <br />
-```
+```ruby
 dependencies: [
-    .package(url: https://github.com/SebastianBoldt/Bird, from: "0.0.1"),
+    .package(url: "https://github.com/SebastianBoldt/Bird", from: "0.0.1"),
 ]
 ```
 
