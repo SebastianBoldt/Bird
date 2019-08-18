@@ -9,40 +9,24 @@
 import Foundation
 import Bird
 
-struct PokeAPI: RequestDefinition {    
-    var urlParameters: [String : String] {
-        return [:]
-    }
+struct GetPokemon: RequestDefinition {    
+    let pokedexNumber: Int
     
-    var bodyParameterType: BodyParameterType? {
-        return nil
+    init(pokedexNumber: Int) {
+        self.pokedexNumber = pokedexNumber
     }
-    
-    var plugins: [Plugin] {
-        return [ExamplePlugin()]
-    }
-    
-    var scheme: Scheme {
-        return .https
-    }
+}
 
+extension GetPokemon {
     var method: HTTPMethod {
         return .get
     }
 
-    var parameters: [String : Codable] {
-        return [:]
-    }
-
-    var headers: [String : String] {
-        return [:]
-    }
-
-    var url: URL {
-        return URL(string: "https://pokeapi.co")!
+    var url: String {
+        return "pokeapi.co"
     }
 
     var path: String {
-        return "/api/v2/pokemon/ditto"
+        return "/api/v2/pokemon/\(pokedexNumber)"
     }
 }

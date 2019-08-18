@@ -18,8 +18,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         let requestService = Bird.makeRequestService()
-        let r = PokeAPI()
-        let request = try! requestService.request(requestDefinition: r)
+        let request = try! requestService.request(GetPokemon(pokedexNumber: 3), responseType: Pokemon.self)
         subscription = request.receive(on: RunLoop.main).sink(receiveCompletion: { completion in
             switch completion {
                 case .finished:

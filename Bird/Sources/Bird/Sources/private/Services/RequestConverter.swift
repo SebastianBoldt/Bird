@@ -29,10 +29,8 @@ final class RequestConverter: RequestConverterProtocol {
 
 extension RequestConverter {
     private func makeURL(from requestDefinition: RequestDefinition) throws -> URL? {
-        guard var components = URLComponents(string: requestDefinition.url.absoluteString) else {
-            throw URLRequestConvertibleError.couldNotCreate(description: "Could not create components")
-        }
-        
+        var components = URLComponents()
+        components.host = requestDefinition.url
         components.query = try makeQueryString(from: requestDefinition.urlParameters)
         components.scheme = requestDefinition.scheme.stringValue
         components.path = requestDefinition.path

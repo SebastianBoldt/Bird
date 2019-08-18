@@ -7,64 +7,64 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "FB6A735E-D967-4394-95F6-F4CF86F5369B"
+            uuid = "86E58572-CDC9-40AA-AF10-C7CE62C1C8E3"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Bird/Sources/Bird/Sources/public/Services/RequestService.swift"
+            filePath = "Bird/Sources/Bird/Sources/private/Services/RequestConverter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "request(requestDefinition:)"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "convertRequest(requestDefinition:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "FB6A735E-D967-4394-95F6-F4CF86F5369B - d3e6d3150cf19f18"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Bird.RequestService.request(request: Bird.RequestDefinition) throws -&gt; Combine.AnyPublisher&lt;(data: Foundation.Data, response: __C.NSURLResponse), Foundation.URLError&gt;"
-                  moduleName = "BirdExampleApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sebastianboldt/Developer/iOS-Projects/Bird/Bird/Sources/Bird/Sources/public/Services/RequestService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "31"
-                  endingLineNumber = "31"
-                  offsetFromSymbolStart = "530">
-               </Location>
-               <Location
-                  uuid = "FB6A735E-D967-4394-95F6-F4CF86F5369B - 741c1a2a47716d77"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Bird.Plugin) -&gt; () in Bird.RequestService.request(request: Bird.RequestDefinition) throws -&gt; Combine.AnyPublisher&lt;(data: Foundation.Data, response: __C.NSURLResponse), Foundation.URLError&gt;"
-                  moduleName = "BirdExampleApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sebastianboldt/Developer/iOS-Projects/Bird/Bird/Sources/Bird/Sources/public/Services/RequestService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "32"
-                  endingLineNumber = "32"
-                  offsetFromSymbolStart = "120">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C5956371-6DCB-4F65-9204-32C4D59FAD06"
+            uuid = "33574DA8-1F26-43E9-B656-47D4D1FDB40D"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Bird/Sources/Bird/Sources/public/Services/RequestService.swift"
+            filePath = "Bird/Sources/Bird/Sources/private/Services/RequestConverter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "request(requestDefinition:)"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "convertRequest(requestDefinition:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CF33C6E2-DCD4-4F08-819E-5BAD1A23F7F1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bird/Sources/Bird/Sources/private/Services/RequestConverter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "makeURL(from:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C64D1A88-8E7D-47E0-A4FA-8B21E93A9724"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bird/Sources/Bird/Sources/private/Services/RequestConverter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "makeURL(from:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
