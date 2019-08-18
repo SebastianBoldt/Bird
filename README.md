@@ -128,3 +128,21 @@ struct ExamplePlugin: Plugin {
 * PublisherPlugins
 * nested URL Parameters
 * Plugin-Suite
+
+
+## Author 
+
+![Me](https://github.com/SebastianBoldt/Bird/blob/develop/Bird/Github/emoji.png?raw=true)
+
+Sebastian Boldt, https://www.sebastianboldt.com 
+
+I am a mobile software architect and developer specializing in iOS. 
+Passionate about creating awesome user experiences, designing beautiful user interfaces, 
+and writing maintainable, structured, and best-practice orientated code. 
+Continuously trying to improve skills and learn new technologies.
+
+<a href="https://paypal.me/boldtsebastian"><img src="https://img.shields.io/badge/paypal-donate-blue.svg?longCache=true&style=flat-square" alt="current version" /></a>
+
+## License
+
+Jelly is available under the MIT license. See the LICENSE file for more info.
