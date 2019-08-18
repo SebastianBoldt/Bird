@@ -49,7 +49,7 @@ struct Pokemon: Codable {
 }
 ```
 
-### Step 3: Instantiate a RequestService
+### Step 3: Create a RequestService
 
 After the Model was declared you need to create an Instance of Type: ```RequestService```
 You can do that by calling a static function on the class ``Bird``.
@@ -58,10 +58,10 @@ You can do that by calling a static function on the class ``Bird``.
 let requestService = Bird.makeRequestService()
 ```
 
-### Step 4: Making the Request
+### Step 4: Make the Request
 
-Because Bird is using ``Combine`` semantics you will be familiar with the following lines of code.
-Just sink and go to receive the response you requested.
+Because Bird is using ``Combine``  you will be familiar with the semantics and the following lines of code.
+Just ``sink`` & go to receive the response you requested.
 
 ```
 let defition = GetPokemon(pokedexNumber: 3)
@@ -80,14 +80,33 @@ subscription = request.receive(on: RunLoop.main).sink(receiveCompletion: { compl
 
 ## Plugins
 
-Plugins can be used to prepare, log or even manipulate responses
-Currenty a Plugin supports 3 different Types of interception.
+Plugins can be used to prepare requests or log responses.
+Currenty a ``Plugin`` supports 3 different Types of interception.
 
 * prepare
 * willSend
 * didReceive
 
+```
+struct ExamplePlugin: Plugin {
+    func prepare(request: URLRequest, definition: RequestDefinition) -> URLRequest {
+        // Manipulate the request with Authorization Headers etc. 
+        return request
+    }
+    
+    func willSend(request: URLRequest, definition: RequestDefinition) {
+        // Request will be send in the next Step
+    }
+    
+    func didReceive(result: URLSession.DataTaskPublisher.Output, definition: RequestDefinition) {
+        // Request was successfull and will be published to the subscriber
+    }
+}
+```
+
 ## Coming Soon
 
 * Stubbing
+* PublisherPlugins
 * nested URL Parameters
+* Plugin-Suite
