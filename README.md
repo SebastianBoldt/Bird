@@ -9,9 +9,12 @@
 
 # 🐤 Bird α
 
+```Bird is currently in alpha stage and should therefore not yet be used in a production environment.```
+
 Bird is a lightweight *HTTP* networking library written in *Swift*. <br />
 It is based on *Apple*s new Reactive Framework *Combine* and focused on maintain- and extendability.
 
+NOTE: Bird is currenlt
 ## How to
 
 ### Step 0: Install 🤝
