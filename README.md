@@ -145,4 +145,4 @@ Continuously trying to improve skills and learn new technologies.
 
 ## License
 
-Jelly is available under the MIT license. See the LICENSE file for more info.
+Bird is available under the MIT license. See the LICENSE file for more info.
